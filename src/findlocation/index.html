@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+    <link rel="stylesheet" type="text/css" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindLocation</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark flex-nowrap flex-row">
+        <div class="container">
+            <a href="../index.html" class="navbar-brand float-left">LifeSaver</a>
+            <ul class="nav navbar-nav flex-row float-right">
+                <li class="nav-item"><a class="nav-link pr-3 xd" href="">Find Location</a></li>
+                <li class="nav-item"><a class="nav-link" href="../mountainPath/index.html">Mountain Paths</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="input-group" style="margin: 40px 0px;">
+        <div class="input-group-prepend" >
+            <span class="input-group-text" id="">Latitude then longitude</span>
+        </div>
+        <input id="inp1" style="margin: 0px 10px;" type="number" class="form-control">
+        <input id="inp2" style="margin: 0px 10px;" type="number" class="form-control">
+        <button type="button" class="btn btn-primary" style="margin: 0px 10px;" onclick="findloc()">Search</button>
+    </div>
+    <div id="map"></div>
+
+    <script>
+            var map = new L.map('map', {
+                        center: [10, 10],
+                        zoom: 12
+            });
+
+        function findloc() {
+            map.off();
+            map.remove();
+
+            var x = document.getElementById('inp1').value;
+            var y = document.getElementById('inp2').value;
+
+            map = new L.map('map', {
+                center: [x, y],
+                zoom: 12
+            });
+
+            var marker = L.marker([x, y]).addTo(map);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+
+        }
+
+    </script>
+</body>
+</html>

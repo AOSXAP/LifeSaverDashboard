@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    <link rel="stylesheet" type="text/css" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindLocation</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark flex-nowrap flex-row">
+        <div class="container">
+            <a href="../index.html" class="navbar-brand float-left">LifeSaver</a>
+            <ul class="nav navbar-nav flex-row float-right">
+                <li class="nav-item"><a class="nav-link pr-3 xd" href="../findlocation/index.html">Find Location</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Mountain Paths</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="card-columns">
+        <div class="card">
+            <img class="card-img-top" onclick="traseu1()" src="../pexels-brady-knoll-5409751.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Path 1</h5>
+                <p class="card-text">"Moldoveanu Peak, at 2,544 metres, is the highest mountain peak in Romania. It is located in Argeș County, in the Făgăraș
+                Mountains of the Southern Carpathians. The most popular routes to reach Moldoveanu are over the Viștea Mare, by paths
+                coming from Podragu, Sâmbăta, or by the Viștea Valley." - Wikipedia
+                </p>
+            </div>
+            
+        </div>
+        <div class="card p-3">
+            <blockquote class="blockquote mb-0 card-body">
+                <p>“Look deep into nature and you will understand everything better.”
+                </p>
+                <footer class="blockquote-footer">
+                    <small class="text-muted">
+                     <cite title="Source Title">Albert Einstein</cite>
+                    </small>
+                </footer>
+            </blockquote>
+        </div>
+
+        <div class="card">
+            <img class="card-img-top" onclick="traseu()" src="../pexels-eberhard-grossgasteiger-1183021 (1).jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Path2</h5>
+                <p class="card-text">Unavailable yet , we will add more paths in the comming months</p>
+                <p class="card-text"><small class="text-muted">Will be updated soon</small></p>
+            </div>
+            
+        </div>
+        <div class="card bg-primary text-white text-center p-3">
+            <blockquote class="blockquote mb-0">
+                <p>“Not all who wander are lost”</p>
+                <footer class="blockquote-footer">
+                    <small>
+                         <cite title="Source Title">JRR Tolkien</cite>
+                    </small>
+                </footer>
+            </blockquote>
+        </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Alex Lowe</h5>
+                <p class="card-text">“There are two kinds of climbers, those who climb because their heart sings when they’re in the mountains, and all the
+                rest.”</p>
+                <p class="card-text"><small class="text-muted">Last updated on 13 November</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img" src="../pexels-errin-casano-2356059.jpg" alt="Card image">
+            
+        </div>
+        <div class="card p-3 text-right">
+            <blockquote class="blockquote mb-0">
+                <p>“It’s not the mountain that we conquer, but ourselves.”</p>
+                <footer class="blockquote-footer">
+                    <small class="text-muted">
+                        <cite title="Source Title">Edmund Hillary</cite>
+                    </small>
+                </footer>
+            </blockquote>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Path3</h5>
+                <p class="card-text">Path3 is going to be added in the upcoming months , make sure to update the app to get the latest paths</p>
+                <p class="card-text"><small class="text-muted">Last updated on 13 November</small></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function traseu1() {
+            window.location = `./paths/index.html`;
+        }
+    </script>
+
+</body>
+
+</html>
