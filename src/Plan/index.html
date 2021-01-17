@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve</title>
+
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+    <style>
+        .all{
+            padding: 30px;
+        }
+
+        .all button{
+            margin: 10px 0px;
+        }
+    </style>
+
+
+        <nav class="navbar navbar-dark bg-dark flex-nowrap flex-row">
+            <div class="container">
+                <a href="../index.html" class="navbar-brand float-left">LifeSaver</a>
+                <ul class="nav navbar-nav flex-row float-right">
+                    <li class="nav-item"><a class="nav-link pr-3" href="../findlocation/index.html">Find Location</a></li>
+                    <li class="nav-item"><a class="nav-link pr-3" href="../mountainPath/index.html">Mountain Paths</a></li>
+                    <li class="nav-item"><a class="nav-link pr-3" href="../showEndangered/index.html">Rescue</a></li>
+                    <li class="nav-item"><a class="nav-link pr-3" href="">Reserve</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    <div class="all" id="my-form">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Reserve</h1>
+                <p class="lead">Reserve your next path so you can wander safely.</p>
+            </div>
+        </div>
+        <form id="formx">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="PhoneNR">Phone</label>
+                    <input type="number" class="form-control" id="PhoneNR" placeholder="Phone Number" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Address" required>
+            </div>
+            <div class="form-group">
+                            <label for="asd">Mountain Path</label>
+                            <select id="asd" class="form-control" required>
+                                <option selected>Cetea – Baile Romane – Piatra Cetii</option>
+                                <option >Borsa – Varful Pietrosu – Tarnita la Cruce</option>
+                                <option >Comuna Sant – Tabara Valea Blaznei – Varful Ineut</option>
+                            </select>
+            </div>
+
+        </form>
+
+        <button onclick="cf()" form="my-form" type="submit" class="btn btn-primary">Send</button>
+
+
+        <p id="qr-result">This is your QR code, take a photo of it:</p>
+        <canvas id="qr-code"></canvas>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+       async function cf() {
+
+           var email = await document.getElementById('inputEmail4').value;
+           var Phone = await document.getElementById('PhoneNR').value;
+           var Address = await document.getElementById('inputAddress').value;
+           var INP = await document.getElementById('asd').value;
+           
+            var o = email + '/' + Phone + '/' + Address + '/';
+
+            var firebaseConfig = {
+               apiKey: "AIzaSyAcnjtDLee5E2kTULRDWI1bHzjXOhre9jE",
+               authDomain: "rnaosx.firebaseapp.com",
+               databaseURL: "https://rnaosx.firebaseio.com",
+               projectId: "rnaosx",
+               storageBucket: "rnaosx.appspot.com",
+               messagingSenderId: "430779929325",
+               appId: "1:430779929325:web:b2a1506db556a9e33df2e4"
+           };
+
+           if (!firebase.apps.length) {
+               await firebase.initializeApp(firebaseConfig);
+           }
+
+           var db = await firebase.firestore();
+
+
+            await db.collection("users").add({
+               email: email,
+               phone_number: Phone,
+               address: Address,
+               path: INP
+
+           })
+
+           var qr;
+           (function () {
+               qr = new QRious({
+                   element: document.getElementById('qr-code'),
+                   size: 200,
+                   value: o
+               });
+           })();
+
+           function generateQRCode() {
+               var qrtext = document.getElementById("qr-text").value;
+               document.getElementById("qr-result").innerHTML = "QR code for " + qrtext + ":";
+               alert(qrtext);
+               qr.set({
+                   foreground: 'black',
+                   size: 200,
+                   value: qrtext
+               });
+           }
+
+           generateQRCode();
+
+
+        
+           }
+           
+       
+   
+    </script>
+</body>
+</html>
